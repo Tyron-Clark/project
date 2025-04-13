@@ -3,9 +3,55 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap"
+      rel="stylesheet"
+    />
     <title>Document</title>
   </head>
   <body>
+    <nav class="flex justify-between items-center px-25 py-5">
+      <h1 id="brand" class="text-5xl font-['Racing_Sans_One']">
+        <a href="" id="brandLink">elefem</a>
+      </h1>
+      <div class="flex gap-30 text-2xl">
+        <ul id="navLinks" class="flex gap-8 items-center">
+          <li><a href="" id="homeLink" class="hover:text-red-500">Home</a></li>
+          <li>
+            <a href="" id="teamsLink" class="hover:text-red-500">Teams</a>
+          </li>
+          <li>
+            <a href="" id="ladderLink" class="hover:text-red-500">Ladder</a>
+          </li>
+          <li>
+            <a href="" id="formsLink" class="hover:text-red-500">Forms</a>
+          </li>
+          <li>
+            <a href="" id="tournamentsLink" class="hover:text-red-500"
+              >Tournaments</a
+            >
+          </li>
+        </ul>
+        <div id="authLinks" class="flex items-center gap-4">
+          <a
+            href=""
+            id="signInLink"
+            class="bg-gray-300 px-2.5 py-1.5 rounded-lg hover:bg-gray-500"
+            >Sign In</a
+          >
+          <a
+            href=""
+            id="RegisterLink"
+            class="bg-gray-800 px-2.5 py-1.5 rounded-lg text-white hover:bg-black"
+            >Register</a
+          >
+        </div>
+      </div>
+    </nav>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
     <script src="script.js"></script>
   </body>
