@@ -15,7 +15,7 @@
   </head>
   <body>
     <nav
-      class="flex flex-col lg:flex-row lg:justify-between items-center px-4 px-6 md:px-10 py-5"
+      class="sticky top-0 flex flex-col lg:flex-row lg:justify-between items-center px-4 px-6 md:px-10 py-5 border-b-2 border-black shadow-lg z-100"
     >
       <h1
         id="brand"
@@ -52,22 +52,30 @@
           <a
             href=""
             id="signInLink"
-            class="bg-gray-300 px-2.5 py-1.5 rounded-lg hover:bg-gray-500"
+            class="bg-gray-300 px-2.5 py-1.5 rounded-lg hover:bg-gray-500 ring-2 ring-black"
             >Sign In</a
           >
           <a
             href=""
             id="RegisterLink"
-            class="bg-gray-800 px-2.5 py-1.5 rounded-lg text-white hover:bg-black"
+            class="bg-gray-800 px-2.5 py-1.5 rounded-lg text-white hover:bg-black ring-2 ring-black"
             >Register</a
           >
         </div>
       </div>
     </nav>
     <main>
-      <section id="hero"></section>
+      <section class="relative" style="height: 50vh">
+        <div
+          id="hero"
+          class="absolute inset-0 bg-hero bg-cover bg-center bg-no-repeat z-0"
+        ></div>
+      </section>
+      <section class="relative z-10 bg-white py-8 border-t-2 border-black">
+        <!-- Added bg-white for visibility -->
+        <h1 class="text-4xl font-bold">Find Teams</h1>
+      </section>
     </main>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
     <script src="script.js"></script>
   </body>

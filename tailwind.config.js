@@ -2,7 +2,11 @@
 export default {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        hero: "url('./assets/nagrand-arena.jpg')",
+      },
+    },
   },
   plugins: [],
 };
