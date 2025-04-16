@@ -15,267 +15,115 @@
   <body>
     <nav-bar></nav-bar>
     <main>
-      <section class="relative  border-b-2 border-black mb-1" style="height: 50vh; margin-top: -1px">
+      <section
+        class="relative border-b-2 border-black mb-1"
+        style="height: 50vh; margin-top: -1px"
+      >
         <div
           id="hero"
           class="absolute inset-0 bg-hero bg-cover bg-center bg-no-repeat z-0"
         ></div>
       </section>
-      <section class="relative z-10 w-full px-2 bg-white max-w-6xl mx-auto  border-black -mt-px">
+      <section
+        id="contentContainer"
+        class="relative z-10 w-full px-2 bg-white max-w-6xl mx-auto border-black -mt-px"
+      >
         <!-- Sticky filters container -->
-        <div class="sticky top-[188px] lg:top-[100px] z-20 bg-white">
-          
-          <div id="teamFilters" class="mb-8 p-3 bg-gray-100 border-b-2 border-black">
+        <div
+          class="sticky top-[188px] md:top-[200px] lg:top-[100px] z-20 bg-white"
+        >
+          <div
+            id="teamFilters"
+            class="mb-8 p-3 bg-gray-100 border-b-2 border-black"
+          >
             <div class="grid grid-cols-2 md:grid-cols-3 gap-6 items-center">
+              <!-- Region filter -->
               <div class="flex gap-10">
                 <label class="flex flex-col items-start">
                   <div class="flex items-center mb-1">
-                    <input type="radio" name="region" value="NA" class="ml-1" checked />
+                    <input
+                      id="selectNA"
+                      type="radio"
+                      name="region"
+                      value="NA"
+                      class="ml-1"
+                      checked
+                    />
                   </div>
                   <span class="">NA</span>
                 </label>
                 <label class="flex flex-col items-start">
                   <div class="flex items-center mb-1">
-                    <input type="radio" name="region" value="EU" class="mr-2" />
+                    <input
+                      id="selectEU"
+                      type="radio"
+                      name="region"
+                      value="EU"
+                      class="mr-2"
+                    />
                   </div>
                   <span>EU</span>
                 </label>
               </div>
-      
+
               <!-- Bracket Filter -->
               <div>
                 <div class="flex gap-10">
                   <label class="flex flex-col items-start">
                     <div class="flex items-center mb-1">
-                      <input type="radio" name="bracket" value="2v2" class="ml-1" checked />
+                      <input
+                        id="select2v2"
+                        type="radio"
+                        name="bracket"
+                        value="2v2"
+                        class="ml-1"
+                        checked
+                      />
                     </div>
                     <span>2v2</span>
                   </label>
                   <label class="flex flex-col items-start">
                     <div class="flex items-center mb-1">
-                      <input type="radio" name="bracket" value="3v3" class="ml-1" />
+                      <input
+                        id="select3v3"
+                        type="radio"
+                        name="bracket"
+                        value="3v3"
+                        class="ml-1"
+                      />
                     </div>
                     <span>3v3</span>
                   </label>
                 </div>
               </div>
-      
-              <!-- Rating Filter -->
+
+              <!-- Sort Filter -->
               <div>
-                <h3 class="text-sm font-medium mb-2">Sort by Rating</h3>
-                <select id="ratingFilter" class="w-full p-2 border border-black rounded-md">
-                  <option value="high-low" selected>High to Low</option>
-                  <option value="low-high">Low to High</option>
+                <h3 class="text-sm font-medium mb-2">Sort:</h3>
+                <select
+                  id="sortFilter"
+                  class="w-full p-2 border border-black rounded-md"
+                >
+                  <option value="high-low" selected>High to Low (CR)</option>
+                  <option value="low-high">Low to High (CR)</option>
+                  <option value="recent">Recent</option>
                 </select>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!---->
-          <div
-            class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
-          >
-            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
-            <p class="text-gray-600 mb-4">Team Desc</p>
-            <button
-              class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
-            >
-              Join
-            </button>
-          </div>
-
-          <!---->
-          <div
-            class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
-          >
-            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
-            <p class="text-gray-600 mb-4">Team Desc</p>
-            <button
-              class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
-            >
-              Join
-            </button>
-          </div>
-
-          <!---->
-
-          <div
-            class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
-          >
-            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
-            <p class="text-gray-600 mb-4">Team Desc</p>
-            <button
-              class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
-            >
-              Join
-            </button>
-          </div>
-          <!---->
-
-          <div
-            class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
-          >
-            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
-            <p class="text-gray-600 mb-4">Team Desc</p>
-            <button
-              class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
-            >
-              Join
-            </button>
-          </div>
-          <!---->
-
-          <div
-            class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
-          >
-            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
-            <p class="text-gray-600 mb-4">Team Desc</p>
-            <button
-              class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
-            >
-              Join
-            </button>
-          </div>
-          <!---->
-
-          <div
-            class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
-          >
-            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
-            <p class="text-gray-600 mb-4">Team Desc</p>
-            <button
-              class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
-            >
-              Join
-            </button>
-          </div>
-          <!---->
-
-          <div
-            class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
-          >
-            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
-            <p class="text-gray-600 mb-4">Team Desc</p>
-            <button
-              class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
-            >
-              Join
-            </button>
-          </div>
-          <!---->
-
-          <div
-            class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
-          >
-            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
-            <p class="text-gray-600 mb-4">Team Desc</p>
-            <button
-              class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
-            >
-              Join
-            </button>
-          </div>
-          <!---->
-
-          <div
-            class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
-          >
-            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
-            <p class="text-gray-600 mb-4">Team Desc</p>
-            <button
-              class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
-            >
-              Join
-            </button>
-          </div>
-          <!---->
-
-          <div
-            class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
-          >
-            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
-            <p class="text-gray-600 mb-4">Team Desc</p>
-            <button
-              class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
-            >
-              Join
-            </button>
-          </div>
-          <!---->
-
-          <div
-            class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
-          >
-            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
-            <p class="text-gray-600 mb-4">Team Desc</p>
-            <button
-              class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
-            >
-              Join
-            </button>
-          </div>
-          <!---->
-
-          <div
-            class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
-          >
-            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
-            <p class="text-gray-600 mb-4">Team Desc</p>
-            <button
-              class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
-            >
-              Join
-            </button>
-          </div>
-          <!---->
-
-          <div
-            class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
-          >
-            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
-            <p class="text-gray-600 mb-4">Team Desc</p>
-            <button
-              class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
-            >
-              Join
-            </button>
-          </div>
-          <!---->
-
-          <div
-            class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
-          >
-            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
-            <p class="text-gray-600 mb-4">Team Desc</p>
-            <button
-              class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
-            >
-              Join
-            </button>
-          </div>
-          <!---->
-
-          <div
-            class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
-          >
-            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
-            <p class="text-gray-600 mb-4">Team Desc</p>
-            <button
-              class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
-            >
-              Join
-            </button>
-          </div>
-
-          <!-- Add more cards as needed -->
+        <div
+          id="teamCardGrid"
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          <team-card></team-card>
         </div>
-      </section>
       </section>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
     <script src="script.js"></script>
     <script src="components/nav-bar.js"></script>
+    <script src="components/team-card.js"></script>
   </body>
 </html>

@@ -1299,6 +1299,18 @@ video {
 }
 
 @media (min-width: 768px) {
+  .md\:top-\[150px\] {
+    top: 150px;
+  }
+
+  .md\:top-\[120px\] {
+    top: 120px;
+  }
+
+  .md\:top-\[200px\] {
+    top: 200px;
+  }
+
   .md\:mt-0 {
     margin-top: 0px;
   }
