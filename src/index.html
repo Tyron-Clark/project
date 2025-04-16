@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,69 +13,19 @@
     <title>Document</title>
   </head>
   <body>
-    <nav
-      class="sticky top-0 flex flex-col lg:flex-row lg:justify-between items-center px-4 px-6 md:px-10 py-5 border-b-2 border-black shadow-lg bg-white z-50"
-    >
-      <h1
-        id="brand"
-        class="text-3xl sm:text-4xl md:text-5xl font-['Racing_Sans_One'] mb-4"
-      >
-        <a href="" id="brandLink">elefem</a>
-      </h1>
-      <div
-        class="flex flex-col lg:flex-row items-center gap-4 md:gap-8 w-full md:w-auto"
-      >
-        <ul
-          id="navLinks"
-          class="flex flex-wrap justify-center gap-4 md:gap-8 text-lg sm:text-xl md:text-2xl"
-        >
-          <li>
-            <a href="" id="homeLink" class="hover:text-red-500">Home</a>
-          </li>
-          <li>
-            <a href="" id="teamsLink" class="hover:text-red-500">Teams</a>
-          </li>
-          <li>
-            <a href="" id="ladderLink" class="hover:text-red-500">Ladder</a>
-          </li>
-          <li>
-            <a href="" id="formsLink" class="hover:text-red-500">Forms</a>
-          </li>
-          <li>
-            <a href="" id="tournamentsLink" class="hover:text-red-500"
-              >Tournaments</a
-            >
-          </li>
-        </ul>
-        <div id="authLinks" class="flex gap-3 sm:gap-4 mt-4 md:mt-0">
-          <a
-            href=""
-            id="signInLink"
-            class="bg-gray-300 px-2.5 py-1.5 rounded-lg hover:bg-gray-500 ring-2 ring-black"
-            >Sign In</a
-          >
-          <a
-            href=""
-            id="RegisterLink"
-            class="bg-gray-800 px-2.5 py-1.5 rounded-lg text-white hover:bg-black ring-2 ring-black"
-            >Register</a
-          >
-        </div>
-      </div>
-    </nav>
+    <nav-bar></nav-bar>
     <main>
-      <section class="relative" style="height: 50vh; margin-top: -1px">
+      <section class="relative  border-b-2 border-black mb-1" style="height: 50vh; margin-top: -1px">
         <div
           id="hero"
           class="absolute inset-0 bg-hero bg-cover bg-center bg-no-repeat z-0"
         ></div>
       </section>
-      <section class="relative z-10 w-full px-2 py-8 bg-white max-w-6xl mx-auto border-2 border-black -mt-px">
+      <section class="relative z-10 w-full px-2 bg-white max-w-6xl mx-auto  border-black -mt-px">
         <!-- Sticky filters container -->
-        <h1 class="text-4xl font-bold">Find Teams</h1>
         <div class="sticky top-[188px] lg:top-[100px] z-20 bg-white">
           
-          <div id="teamFilters" class="mb-8 p-3 bg-gray-100 border-b-2 border-t-2 border-black">
+          <div id="teamFilters" class="mb-8 p-3 bg-gray-100 border-b-2 border-black">
             <div class="grid grid-cols-2 md:grid-cols-3 gap-6 items-center">
               <div class="flex gap-10">
                 <label class="flex flex-col items-start">
@@ -128,12 +77,12 @@
           <div
             class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
           >
-            <h2 class="text-2xl font-bold mb-3">Team Beta</h2>
-            <p class="text-gray-600 mb-4">Casual players welcome!</p>
+            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
+            <p class="text-gray-600 mb-4">Team Desc</p>
             <button
               class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
             >
-              Join Team
+              Join
             </button>
           </div>
 
@@ -141,12 +90,12 @@
           <div
             class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
           >
-            <h2 class="text-2xl font-bold mb-3">Team Beta</h2>
-            <p class="text-gray-600 mb-4">Casual players welcome!</p>
+            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
+            <p class="text-gray-600 mb-4">Team Desc</p>
             <button
               class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
             >
-              Join Team
+              Join
             </button>
           </div>
 
@@ -155,12 +104,12 @@
           <div
             class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
           >
-            <h2 class="text-2xl font-bold mb-3">Team Beta</h2>
-            <p class="text-gray-600 mb-4">Casual players welcome!</p>
+            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
+            <p class="text-gray-600 mb-4">Team Desc</p>
             <button
               class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
             >
-              Join Team
+              Join
             </button>
           </div>
           <!---->
@@ -168,12 +117,12 @@
           <div
             class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
           >
-            <h2 class="text-2xl font-bold mb-3">Team Beta</h2>
-            <p class="text-gray-600 mb-4">Casual players welcome!</p>
+            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
+            <p class="text-gray-600 mb-4">Team Desc</p>
             <button
               class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
             >
-              Join Team
+              Join
             </button>
           </div>
           <!---->
@@ -181,12 +130,12 @@
           <div
             class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
           >
-            <h2 class="text-2xl font-bold mb-3">Team Beta</h2>
-            <p class="text-gray-600 mb-4">Casual players welcome!</p>
+            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
+            <p class="text-gray-600 mb-4">Team Desc</p>
             <button
               class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
             >
-              Join Team
+              Join
             </button>
           </div>
           <!---->
@@ -194,12 +143,12 @@
           <div
             class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
           >
-            <h2 class="text-2xl font-bold mb-3">Team Beta</h2>
-            <p class="text-gray-600 mb-4">Casual players welcome!</p>
+            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
+            <p class="text-gray-600 mb-4">Team Desc</p>
             <button
               class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
             >
-              Join Team
+              Join
             </button>
           </div>
           <!---->
@@ -207,12 +156,12 @@
           <div
             class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
           >
-            <h2 class="text-2xl font-bold mb-3">Team Beta</h2>
-            <p class="text-gray-600 mb-4">Casual players welcome!</p>
+            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
+            <p class="text-gray-600 mb-4">Team Desc</p>
             <button
               class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
             >
-              Join Team
+              Join
             </button>
           </div>
           <!---->
@@ -220,12 +169,12 @@
           <div
             class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
           >
-            <h2 class="text-2xl font-bold mb-3">Team Beta</h2>
-            <p class="text-gray-600 mb-4">Casual players welcome!</p>
+            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
+            <p class="text-gray-600 mb-4">Team Desc</p>
             <button
               class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
             >
-              Join Team
+              Join
             </button>
           </div>
           <!---->
@@ -233,12 +182,12 @@
           <div
             class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
           >
-            <h2 class="text-2xl font-bold mb-3">Team Beta</h2>
-            <p class="text-gray-600 mb-4">Casual players welcome!</p>
+            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
+            <p class="text-gray-600 mb-4">Team Desc</p>
             <button
               class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
             >
-              Join Team
+              Join
             </button>
           </div>
           <!---->
@@ -246,12 +195,12 @@
           <div
             class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
           >
-            <h2 class="text-2xl font-bold mb-3">Team Beta</h2>
-            <p class="text-gray-600 mb-4">Casual players welcome!</p>
+            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
+            <p class="text-gray-600 mb-4">Team Desc</p>
             <button
               class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
             >
-              Join Team
+              Join
             </button>
           </div>
           <!---->
@@ -259,12 +208,12 @@
           <div
             class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
           >
-            <h2 class="text-2xl font-bold mb-3">Team Beta</h2>
-            <p class="text-gray-600 mb-4">Casual players welcome!</p>
+            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
+            <p class="text-gray-600 mb-4">Team Desc</p>
             <button
               class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
             >
-              Join Team
+              Join
             </button>
           </div>
           <!---->
@@ -272,12 +221,12 @@
           <div
             class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
           >
-            <h2 class="text-2xl font-bold mb-3">Team Beta</h2>
-            <p class="text-gray-600 mb-4">Casual players welcome!</p>
+            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
+            <p class="text-gray-600 mb-4">Team Desc</p>
             <button
               class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
             >
-              Join Team
+              Join
             </button>
           </div>
           <!---->
@@ -285,12 +234,12 @@
           <div
             class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
           >
-            <h2 class="text-2xl font-bold mb-3">Team Beta</h2>
-            <p class="text-gray-600 mb-4">Casual players welcome!</p>
+            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
+            <p class="text-gray-600 mb-4">Team Desc</p>
             <button
               class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
             >
-              Join Team
+              Join
             </button>
           </div>
           <!---->
@@ -298,12 +247,12 @@
           <div
             class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
           >
-            <h2 class="text-2xl font-bold mb-3">Team Beta</h2>
-            <p class="text-gray-600 mb-4">Casual players welcome!</p>
+            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
+            <p class="text-gray-600 mb-4">Team Desc</p>
             <button
               class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
             >
-              Join Team
+              Join
             </button>
           </div>
           <!---->
@@ -311,12 +260,12 @@
           <div
             class="border-2 border-black rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
           >
-            <h2 class="text-2xl font-bold mb-3">Team Beta</h2>
-            <p class="text-gray-600 mb-4">Casual players welcome!</p>
+            <h2 class="text-2xl font-bold mb-3">Team Name</h2>
+            <p class="text-gray-600 mb-4">Team Desc</p>
             <button
               class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
             >
-              Join Team
+              Join
             </button>
           </div>
 
@@ -327,5 +276,6 @@
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
     <script src="script.js"></script>
+    <script src="components/nav-bar.js"></script>
   </body>
 </html>
