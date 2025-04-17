@@ -21,9 +21,6 @@ class NavBar extends HTMLElement {
             <a href="" id="homeLink" class="hover:text-red-500">Home</a>
           </li>
           <li>
-            <a href="" id="teamsLink" class="hover:text-red-500">Teams</a>
-          </li>
-          <li>
             <a href="" id="ladderLink" class="hover:text-red-500">Ladder</a>
           </li>
           <li>
