@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script type="importmap">
+      {
+        "imports": {
+          "axios": "https://cdn.jsdelivr.net/npm/axios@1.6.2/dist/axios.min.js"
+        }
+      }
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -88,8 +95,7 @@
         justify-content: center;
         align-items: center;
         gap: 1rem;
-        margin-top: 1.5rem;
-        margin-bottom: 2rem;
+
         padding: 0.75rem;
         border-radius: 0.25rem;
       }
@@ -101,9 +107,9 @@
 
       .pagination-btn {
         padding: 0.35rem 0.5rem;
-        border: 1px solid #ff9800;
+        border: 1px solid black;
         background-color: transparent;
-        color: #ff9800;
+        color: red;
         border-radius: 0.25rem;
         font-weight: bold;
         cursor: pointer;
@@ -116,6 +122,7 @@
 
       .pagination-btn:hover:not(:disabled) {
         background-color: red;
+        color: black;
       }
 
       .pagination-btn:disabled {
@@ -150,6 +157,7 @@
             <button id="btn3v3" class="bracket-btn inactive">3v3</button>
           </div>
         </div>
+        <div id="pagination" class="pagination"></div>
       </div>
 
       <div
@@ -182,6 +190,6 @@
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
     <script src="../components/nav-bar.js"></script>
-    <script src="../script.js"></script>
+    <script type="module" src="../script.js"></script>
   </body>
 </html>
