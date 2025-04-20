@@ -8,7 +8,7 @@ class NavBar extends HTMLElement {
         id="brand"
         class="text-3xl sm:text-4xl md:text-5xl font-['Racing_Sans_One'] mb-4"
       >
-        <a href="" id="brandLink">elefem</a>
+        <a href="http://localhost:3000/" id="brandLink">elefem</a>
       </h1>
       <div
         class="flex flex-col lg:flex-row items-center gap-4 md:gap-8 w-full md:w-auto"
@@ -18,10 +18,10 @@ class NavBar extends HTMLElement {
           class="flex flex-wrap justify-center gap-4 md:gap-8 text-lg sm:text-xl md:text-2xl"
         >
           <li>
-            <a href="" id="homeLink" class="hover:text-red-500">Home</a>
+            <a href="http://localhost:3000/" id="homeLink" class="hover:text-red-500">Home</a>
           </li>
           <li>
-            <a href="" id="ladderLink" class="hover:text-red-500">Ladder</a>
+            <a href="http://localhost:3000/ladder" id="ladderLink" class="hover:text-red-500">Ladder</a>
           </li>
           <li>
             <a href="" id="formsLink" class="hover:text-red-500">Forms</a>

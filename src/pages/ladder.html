@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap"
+      rel="stylesheet"
+    />
+    <link href="../output.css" rel="stylesheet" />
+    <title>Arena Ladder</title>
+    <style>
+      .ladder-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+      }
+
+      .ladder-table thead {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      .ladder-table th {
+        background-color: #1f2937;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+      }
+
+      /* Cell styling */
+      .ladder-table td {
+        padding: 10px;
+        text-align: center;
+        background-color: #1f2937;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      .ladder-table tr:hover {
+        background-color: #f9fafb;
+      }
+
+      /* Player name column styling */
+      .player-name div {
+        display: flex;
+        align-items: left;
+        padding-left: 10rem;
+        /* justify-content: flex-start; */
+      }
+
+      .player-name .realm-name {
+        text-align: left;
+        color: #71717a;
+      }
+
+      /* Bracket button styling */
+      .bracket-btn {
+        padding: 0.5rem 1rem;
+        border-radius: 0.375rem;
+        font-weight: 600;
+        transition: all 0.2s ease;
+      }
+
+      .bracket-btn.active {
+        background-color: #f3f4f6;
+        color: #dc2626; /* Red color for active state */
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        transform: translateY(1px);
+      }
+
+      .bracket-btn.inactive {
+        background-color: #e5e7eb;
+        color: #000000; /* Black color for inactive state */
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .bracket-btn.inactive:hover {
+        background-color: #d1d5db;
+      }
+
+      /* Pagination styling */
+      .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+        margin-bottom: 2rem;
+        padding: 0.75rem;
+        border-radius: 0.25rem;
+      }
+
+      .pagination-controls {
+        display: flex;
+        gap: 0.25rem;
+      }
+
+      .pagination-btn {
+        padding: 0.35rem 0.5rem;
+        border: 1px solid #ff9800;
+        background-color: transparent;
+        color: #ff9800;
+        border-radius: 0.25rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        min-width: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .pagination-btn:hover:not(:disabled) {
+        background-color: red;
+      }
+
+      .pagination-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .page-counter {
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+      }
+      .faction-icon {
+        display: inline-block;
+        width: 20px;
+        text-align: center;
+        margin-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav-bar></nav-bar>
+    <main class="container mx-auto px-4 py-8">
+      <h1 class="text-4xl font-['Racing_Sans_One'] mb-8 text-center">
+        Arena Ladder
+      </h1>
+
+      <div class="flex justify-center mb-6">
+        <div class="bg-gray-100 p-2 rounded-lg border border-gray-300">
+          <div class="flex gap-4">
+            <button id="btn2v2" class="bracket-btn active">2v2</button>
+            <button id="btn3v3" class="bracket-btn inactive">3v3</button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="bg-white rounded-lg shadow-lg border-2 border-black overflow-hidden"
+      >
+        <table class="ladder-table">
+          <thead>
+            <tr>
+              <th width="8%">Rank</th>
+              <th width="30%">Player</th>
+              <th width="15%">Rating</th>
+              <th width="15%">Server</th>
+              <th width="15%">W/L</th>
+              <th width="12%">Win %</th>
+            </tr>
+          </thead>
+          <tbody id="ladderEntries">
+            <tr>
+              <td colspan="6" class="text-center py-8 text-gray-500">
+                Loading ladder data...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="pagination" class="pagination"></div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
+    <script src="../components/nav-bar.js"></script>
+    <script src="../script.js"></script>
+  </body>
+</html>

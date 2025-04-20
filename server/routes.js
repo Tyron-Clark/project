@@ -15,5 +15,9 @@ app.listen(PORT, () => {
 app.use(express.static(path.join(__dirname, "..", "src")));
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "src", "home.html"));
+  res.sendFile(path.join(__dirname, "..", "src", "pages", "home.html"));
+});
+
+app.get("/ladder", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "src", "pages", "ladder.html"));
 });
