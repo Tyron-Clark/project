@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
   btn2v2.addEventListener("click", () => switchBracket("2v2"));
   btn3v3.addEventListener("click", () => switchBracket("3v3"));
 
-  // Add event listener for page changes
+  // Listen for changePage events from pagination components
   document.addEventListener("changePage", (event) => {
     currentPage = event.detail.page;
     displayPage(
@@ -56,6 +56,7 @@ async function loadLadderData(bracket) {
     createPagination(totalPages, currentPage);
   } catch (error) {
     console.error("Error loading ladder:", error);
+    const container = document.getElementById("ladderEntries");
     container.innerHTML = `
       <tr>
         <td colspan="6" class="text-center py-8 text-red-500">
@@ -63,7 +64,8 @@ async function loadLadderData(bracket) {
         </td>
       </tr>
     `;
-    document.getElementById("pagination").innerHTML = "";
+    // Still update pagination to show there are no pages
+    createPagination(0, 0);
   }
 }
 

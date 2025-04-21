@@ -2,6 +2,7 @@ class NavBar extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
     <nav
+      
       class="sticky top-0 flex flex-col lg:flex-row lg:justify-between items-center px-4 px-6 md:px-10 py-5 border-b-2 border-black shadow-lg bg-white z-50"
     >
       <h1

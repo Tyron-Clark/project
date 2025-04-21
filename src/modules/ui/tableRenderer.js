@@ -63,7 +63,7 @@ export async function displayPage(
         </div>
       </td>
       <td width="15%" class="text-center">
-        <span style="color:green;">${wins}</span>-<span style="color:red;">${losses}</span>
+        <span style="color:#4ade80;">${wins}</span><span style="color:white;"> - </span><span style="color:#f87171;">${losses}</span>
       </td>
       <td width="12%" class="text-center text-white">
         ${winPercentage}

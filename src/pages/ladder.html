@@ -17,14 +17,22 @@
       rel="stylesheet"
     />
     <link href="../output.css" rel="stylesheet" />
-    <title>Arena Ladder</title>
+    <title>elefem - Arena Ladder</title>
     <style>
+      body {
+        background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+      }
       .ladder-table {
         width: 100%;
         border-collapse: separate;
         border-spacing: 0;
+
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+        background-color: #f0f0f0; /* Light gray base background */
       }
 
+      /* Header styling - keeping your existing style */
       .ladder-table thead {
         position: sticky;
         top: 0;
@@ -32,108 +40,198 @@
       }
 
       .ladder-table th {
-        background-color: #1f2937;
-        color: white;
-        padding: 10px;
+        background-color: #000000;
+        color: #ffffff;
+        padding: 12px;
         text-align: center;
-        box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        border-bottom: 3px solid #dc2626;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
       }
 
-      /* Cell styling */
-      .ladder-table td {
-        padding: 10px;
-        text-align: center;
-        background-color: #1f2937;
-        border-bottom: 1px solid #e5e7eb;
+      /* Row styling with darker backgrounds for better contrast */
+      .ladder-table tr:nth-child(odd) {
+        background-color: #121212; /* Darker gray for odd rows */
+      }
+
+      .ladder-table tr:nth-child(even) {
+        background-color: #1e1e1e; /* Light gray for even rows */
       }
 
       .ladder-table tr:hover {
-        background-color: #f9fafb;
+        background-color: linear-gradient(
+          to right,
+          rgba(220, 38, 38, 0.2),
+          transparent
+        ); /* Very light red on hover */
+        box-shadow: inset 0 0 0 1px #dc2626;
+        cursor: pointer;
       }
 
-      /* Player name column styling */
+      /* Class colors styling for better visibility */
+
+      /* Cell styling */
+      .ladder-table td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid #e5e7eb;
+        transition: all 0.2s ease;
+      }
+
+      .ladder-table td:first-child {
+        font-weight: bold;
+        color: white;
+      }
+
+      .ladder-table th:nth-child(2) {
+        /* Targets the "Player" header specifically */
+        text-align: center;
+      }
+
+      /* Player name cell - centered flex container */
+      .player-name {
+        text-align: center;
+      }
+
       .player-name div {
         display: flex;
-        align-items: left;
-        padding-left: 10rem;
-        /* justify-content: flex-start; */
+        align-items: center;
+        justify-content: center; /* Add this to center horizontally */
+        padding-left: 0; /* Remove the left padding */
+        letter-spacing: 3px;
       }
 
+      .player-name .player-main {
+        font-weight: 600;
+        color: white;
+      }
+
+      .player-name .realm-name {
+        color: #71717a;
+        margin-left: 0.5rem;
+        font-size: 0.9em;
+      }
+
+      /* Win percentage styling - different color based on performance */
+      .ladder-table td:last-child {
+        font-weight: 600;
+      }
+      .ladder-table tr:hover td:nth-child(3) {
+        /* Targets the 3rd column (Rating) */
+        color: #dc2626 !important; /* Your theme red */
+        transition: color 0.2s ease;
+      }
+
+      /* Faction icon styling */
+      .faction-icon {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        text-align: center;
+        margin-right: 10px;
+        font-size: 1.2em;
+      }
+
+      .faction-horde {
+        color: #dc2626;
+      }
+
+      .faction-alliance {
+        color: #2563eb;
+      }
+
+      /* Empty state styling */
+      .empty-state {
+        padding: 2rem;
+        text-align: center;
+        color: #dc2626;
+        font-style: italic;
+        background-color: #f9f9f9;
+      }
       .player-name .realm-name {
         text-align: left;
         color: #71717a;
       }
 
       /* Bracket button styling */
+      .bracket-controls {
+        background-color: #121212 !important; /* Dark background */
+        border: 1px solid #dc2626 !important; /* Red border */
+        border-radius: 8px;
+      }
+
       .bracket-btn {
-        padding: 0.5rem 1rem;
-        border-radius: 0.375rem;
+        padding: 0.5rem 1.5rem;
+        border-radius: 6px;
         font-weight: 600;
         transition: all 0.2s ease;
+        border: 2px solid transparent;
+        font-family: "Racing Sans One", sans-serif;
+        letter-spacing: 1px;
       }
 
+      /* Active state (selected bracket) */
       .bracket-btn.active {
-        background-color: #f3f4f6;
-        color: #dc2626; /* Red color for active state */
-        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-        transform: translateY(1px);
+        background-color: #dc2626; /* Solid red */
+        color: white;
+        box-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+        border-color: #dc2626;
       }
 
+      /* Inactive state */
       .bracket-btn.inactive {
-        background-color: #e5e7eb;
-        color: #000000; /* Black color for inactive state */
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        background-color: transparent;
+        color: #d1d5db; /* Light gray */
+        border-color: #4b5563; /* Dark gray border */
       }
 
       .bracket-btn.inactive:hover {
-        background-color: #d1d5db;
+        background-color: rgba(220, 38, 38, 0.1); /* Subtle red tint */
+        color: white;
+        border-color: #dc2626;
       }
 
       /* Pagination styling */
       .pagination {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
+        background-color: #121212; /* Match bracket buttons */
 
-        padding: 0.75rem;
-        border-radius: 0.25rem;
+        padding: 0.5rem;
       }
 
-      .pagination-controls {
-        display: flex;
-        gap: 0.25rem;
-      }
-
+      /* Pagination buttons */
       .pagination-btn {
-        padding: 0.35rem 0.5rem;
-        border: 1px solid black;
+        padding: 0.5rem 0.75rem;
         background-color: transparent;
-        color: red;
-        border-radius: 0.25rem;
+        color: #d1d5db; /* Light gray */
+        border: 2px solid #4b5563; /* Dark gray */
+        border-radius: 6px;
         font-weight: bold;
-        cursor: pointer;
         transition: all 0.2s ease;
-        min-width: 2rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        margin: 0 2px;
       }
 
       .pagination-btn:hover:not(:disabled) {
-        background-color: red;
-        color: black;
+        background-color: #dc2626;
+        color: white;
+        border-color: #dc2626;
+        box-shadow: 0 0 8px rgba(220, 38, 38, 0.3);
       }
 
       .pagination-btn:disabled {
         opacity: 0.5;
         cursor: not-allowed;
+        border-color: #4b5563;
       }
 
+      /* Page counter text */
       .page-counter {
-        font-weight: 500;
-        display: flex;
-        align-items: center;
+        color: white !important; /* Force white text */
+        font-family: "Racing Sans One", sans-serif;
+        text-align: center;
+        padding-top: 3px;
+        font-size: 1.2rem;
       }
       .faction-icon {
         display: inline-block;
@@ -141,23 +239,43 @@
         text-align: center;
         margin-right: 5px;
       }
+
+      /* Added styles for positioning the pagination components */
+      .controls-container {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+      .controls-container .bracket-controls {
+        grid-column: 1;
+        justify-self: start;
+      }
+      .controls-container pagination-buttons {
+        grid-column: 2;
+        justify-self: center;
+      }
+      .bottom-pagination {
+        margin-top: 1.5rem;
+        display: flex;
+        justify-content: center;
+      }
     </style>
   </head>
   <body>
     <nav-bar></nav-bar>
     <main class="container mx-auto px-4 py-8">
-      <h1 class="text-4xl font-['Racing_Sans_One'] mb-8 text-center">
-        Arena Ladder
-      </h1>
-
-      <div class="flex justify-center mb-6">
-        <div class="bg-gray-100 p-2 rounded-lg border border-gray-300">
+      <div class="controls-container">
+        <div
+          class="bracket-controls bg-gray-100 p-2 rounded-lg border border-gray-300"
+        >
           <div class="flex gap-4">
             <button id="btn2v2" class="bracket-btn active">2v2</button>
             <button id="btn3v3" class="bracket-btn inactive">3v3</button>
           </div>
         </div>
-        <div id="pagination" class="pagination"></div>
+        <!-- Top pagination component -->
+        <pagination-buttons></pagination-buttons>
       </div>
 
       <div
@@ -184,12 +302,16 @@
         </table>
       </div>
 
-      <div id="pagination" class="pagination"></div>
+      <!-- Bottom pagination component -->
+      <div class="bottom-pagination">
+        <pagination-buttons></pagination-buttons>
+      </div>
     </main>
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
     <script src="../components/nav-bar.js"></script>
+    <script src="../components/pagination-buttons.js"></script>
     <script type="module" src="../script.js"></script>
   </body>
 </html>
