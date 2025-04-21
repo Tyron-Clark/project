@@ -1,15 +1,16 @@
 import { getBattleNetToken } from "./battleNetApi.js";
 
-export async function getPvPLeaderboard(region = "us", bracket = "3v3") {
+export async function getPvPLeaderboard(region = "eu", bracket = "2v2") {
   try {
     const token = await getBattleNetToken();
     const bracketPath = bracket === "2v2" ? "2v2" : "3v3";
+    const regionPath = region === "eu" ? "eu" : "us";
 
     const response = await axios.get(
-      `https://${region}.api.blizzard.com/data/wow/pvp-season/11/pvp-leaderboard/${bracketPath}`,
+      `https://${regionPath}.api.blizzard.com/data/wow/pvp-season/11/pvp-leaderboard/${bracketPath}`,
       {
         params: {
-          namespace: `dynamic-classic-${region}`,
+          namespace: `dynamic-classic-${regionPath}`,
           locale: "en_US",
         },
         headers: {

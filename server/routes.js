@@ -21,3 +21,8 @@ app.get("/", (req, res) => {
 app.get("/ladder", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "src", "pages", "ladder.html"));
 });
+
+// New route for player detail pages
+app.get("/player/:realm/:name", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "src", "pages", "player.html"));
+});

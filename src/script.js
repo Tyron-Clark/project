@@ -4,7 +4,7 @@ import { displayPage } from "./modules/ui/tableRenderer.js";
 
 // Global state
 let currentBracket = "2v2";
-const region = "us";
+let currentRegion = "eu";
 let currentPage = 1;
 let entriesPerPage = 100;
 let allEntries = [];
@@ -14,13 +14,18 @@ let characterClassCache = {};
 // DOM elements
 const btn2v2 = document.getElementById("btn2v2");
 const btn3v3 = document.getElementById("btn3v3");
+const btnRegionEU = document.getElementById("btnRegionEU");
+const btnRegionNA = document.getElementById("btnRegionNA");
 const ladderTitle = document.querySelector("h1");
 
 // Initialize
 document.addEventListener("DOMContentLoaded", function () {
-  loadLadderData(currentBracket);
+  updateButtonStyles();
+  loadLadderData(currentRegion, currentBracket);
   btn2v2.addEventListener("click", () => switchBracket("2v2"));
   btn3v3.addEventListener("click", () => switchBracket("3v3"));
+  btnRegionEU.addEventListener("click", () => switchRegion("eu"));
+  btnRegionNA.addEventListener("click", () => switchRegion("us"));
 
   // Listen for changePage events from pagination components
   document.addEventListener("changePage", (event) => {
@@ -30,15 +35,26 @@ document.addEventListener("DOMContentLoaded", function () {
       allEntries,
       entriesPerPage,
       characterClassCache,
-      region
+      currentRegion
     );
     createPagination(totalPages, currentPage);
   });
 });
 
-async function loadLadderData(bracket) {
+function updateDisplay() {
+  displayPage(
+    currentPage,
+    allEntries,
+    entriesPerPage,
+    characterClassCache,
+    currentRegion
+  );
+  createPagination(totalPages, currentPage);
+}
+
+async function loadLadderData(region, bracket) {
+  const container = document.getElementById("ladderEntries");
   try {
-    const container = document.getElementById("ladderEntries");
     container.innerHTML =
       '<tr><td colspan="6" class="text-center py-8 text-gray-500">Loading...</td></tr>';
 
@@ -46,25 +62,15 @@ async function loadLadderData(bracket) {
     allEntries = leaderboard.entries.sort((a, b) => b.rating - a.rating);
     totalPages = Math.ceil(allEntries.length / entriesPerPage);
 
-    displayPage(
-      currentPage,
-      allEntries,
-      entriesPerPage,
-      characterClassCache,
-      region
-    );
-    createPagination(totalPages, currentPage);
+    updateDisplay();
   } catch (error) {
     console.error("Error loading ladder:", error);
-    const container = document.getElementById("ladderEntries");
     container.innerHTML = `
       <tr>
         <td colspan="6" class="text-center py-8 text-red-500">
           Failed to load ladder data. Please try again later.
         </td>
-      </tr>
-    `;
-    // Still update pagination to show there are no pages
+      </tr>`;
     createPagination(0, 0);
   }
 }
@@ -74,20 +80,28 @@ function switchBracket(bracket) {
   currentBracket = bracket;
   currentPage = 1;
   updateButtonStyles();
-  ladderTitle.textContent = `${bracket} Arena Ladder`;
-  loadLadderData(bracket);
+  loadLadderData(currentRegion, currentBracket);
+}
+
+function switchRegion(region) {
+  if (region === currentRegion) return;
+  currentRegion = region;
+  currentPage = 1;
+  characterClassCache = {};
+  updateButtonStyles();
+  loadLadderData(currentRegion, currentBracket);
 }
 
 function updateButtonStyles() {
-  if (currentBracket === "2v2") {
-    btn2v2.classList.add("active");
-    btn2v2.classList.remove("inactive");
-    btn3v3.classList.add("inactive");
-    btn3v3.classList.remove("active");
-  } else {
-    btn3v3.classList.add("active");
-    btn3v3.classList.remove("inactive");
-    btn2v2.classList.add("inactive");
-    btn2v2.classList.remove("active");
-  }
+  // Update bracket buttons
+  btn2v2.classList.toggle("active", currentBracket === "2v2");
+  btn2v2.classList.toggle("inactive", currentBracket !== "2v2");
+  btn3v3.classList.toggle("active", currentBracket === "3v3");
+  btn3v3.classList.toggle("inactive", currentBracket !== "3v3");
+
+  // Update region buttons
+  btnRegionEU.classList.toggle("active", currentRegion === "eu");
+  btnRegionEU.classList.toggle("inactive", currentRegion !== "eu");
+  btnRegionNA.classList.toggle("active", currentRegion === "us");
+  btnRegionNA.classList.toggle("inactive", currentRegion !== "us");
 }

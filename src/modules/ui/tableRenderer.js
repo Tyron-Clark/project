@@ -10,7 +10,7 @@ export async function displayPage(
   allEntries,
   entriesPerPage,
   characterClassCache,
-  region
+  currentRegion
 ) {
   const container = document.getElementById("ladderEntries");
   container.innerHTML = "";
@@ -24,7 +24,7 @@ export async function displayPage(
     const cacheKey = `${entry.character.realm.slug}_${entry.character.name}`;
     if (!characterClassCache[cacheKey]) {
       const characterClass = await getCharacterClass(
-        region,
+        currentRegion,
         entry.character.realm.slug,
         entry.character.name
       );
@@ -47,11 +47,14 @@ export async function displayPage(
     const losses = entry.season_match_statistics.lost;
     const winPercentage = calculateWinPercentage(wins, losses);
 
+    // Create a player URL for the details page
+    const playerUrl = `/player/${entry.character.realm.slug}/${entry.character.name}`;
+
     row.innerHTML = `
       <td width="8%" class="font-medium text-center text-white">${globalRank}</td>
       <td width="30%" class="player-name">
         <div class="flex items-center">
-          <span style="color: ${classColor}; font-weight: bold;">${entry.character.name}</span>
+          <a href="${playerUrl}" class="player-link" style="color: ${classColor}; font-weight: bold;">${entry.character.name}</a>
         </div>
       </td>
       <td width="15%" class="font-bold text-white text-center">

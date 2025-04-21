@@ -1,13 +1,17 @@
 import { getBattleNetToken } from "./battleNetApi.js";
 
-export async function getCharacterClass(region, realmSlug, characterName) {
+export async function getCharacterClass(
+  currentRegion,
+  realmSlug,
+  characterName
+) {
   try {
     const token = await getBattleNetToken();
     const response = await axios.get(
-      `https://${region}.api.blizzard.com/profile/wow/character/${realmSlug.toLowerCase()}/${characterName.toLowerCase()}`,
+      `https://${currentRegion}.api.blizzard.com/profile/wow/character/${realmSlug.toLowerCase()}/${characterName.toLowerCase()}`,
       {
         params: {
-          namespace: `profile-classic-${region}`,
+          namespace: `profile-classic-${currentRegion}`,
           locale: "en_US",
         },
         headers: {

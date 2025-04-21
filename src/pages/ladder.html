@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script type="importmap">
-      {
-        "imports": {
-          "axios": "https://cdn.jsdelivr.net/npm/axios@1.6.2/dist/axios.min.js"
-        }
-      }
-    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,10 +22,9 @@
 
         font-size: 1.2rem;
         letter-spacing: 1px;
-        background-color: #f0f0f0; /* Light gray base background */
+        background-color: #f0f0f0;
       }
 
-      /* Header styling - keeping your existing style */
       .ladder-table thead {
         position: sticky;
         top: 0;
@@ -51,13 +43,12 @@
         letter-spacing: 1px;
       }
 
-      /* Row styling with darker backgrounds for better contrast */
       .ladder-table tr:nth-child(odd) {
-        background-color: #121212; /* Darker gray for odd rows */
+        background-color: #121212;
       }
 
       .ladder-table tr:nth-child(even) {
-        background-color: #1e1e1e; /* Light gray for even rows */
+        background-color: #1e1e1e;
       }
 
       .ladder-table tr:hover {
@@ -70,9 +61,6 @@
         cursor: pointer;
       }
 
-      /* Class colors styling for better visibility */
-
-      /* Cell styling */
       .ladder-table td {
         padding: 12px;
         text-align: center;
@@ -86,11 +74,9 @@
       }
 
       .ladder-table th:nth-child(2) {
-        /* Targets the "Player" header specifically */
         text-align: center;
       }
 
-      /* Player name cell - centered flex container */
       .player-name {
         text-align: center;
       }
@@ -98,8 +84,8 @@
       .player-name div {
         display: flex;
         align-items: center;
-        justify-content: center; /* Add this to center horizontally */
-        padding-left: 0; /* Remove the left padding */
+        justify-content: center;
+        padding-left: 0;
         letter-spacing: 3px;
       }
 
@@ -114,17 +100,14 @@
         font-size: 0.9em;
       }
 
-      /* Win percentage styling - different color based on performance */
       .ladder-table td:last-child {
         font-weight: 600;
       }
       .ladder-table tr:hover td:nth-child(3) {
-        /* Targets the 3rd column (Rating) */
-        color: #dc2626 !important; /* Your theme red */
+        color: #dc2626 !important;
         transition: color 0.2s ease;
       }
 
-      /* Faction icon styling */
       .faction-icon {
         display: inline-block;
         width: 24px;
@@ -142,7 +125,6 @@
         color: #2563eb;
       }
 
-      /* Empty state styling */
       .empty-state {
         padding: 2rem;
         text-align: center;
@@ -155,7 +137,6 @@
         color: #71717a;
       }
 
-      /* Bracket button styling */
       .bracket-controls {
         background-color: #121212 !important; /* Dark background */
         border: 1px solid #dc2626 !important; /* Red border */
@@ -168,44 +149,40 @@
         font-weight: 600;
         transition: all 0.2s ease;
         border: 2px solid transparent;
-        font-family: "Racing Sans One", sans-serif;
+
         letter-spacing: 1px;
       }
 
-      /* Active state (selected bracket) */
       .bracket-btn.active {
-        background-color: #dc2626; /* Solid red */
+        background-color: #dc2626;
         color: white;
         box-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
         border-color: #dc2626;
       }
 
-      /* Inactive state */
       .bracket-btn.inactive {
         background-color: transparent;
-        color: #d1d5db; /* Light gray */
-        border-color: #4b5563; /* Dark gray border */
+        color: #d1d5db;
+        border-color: #4b5563;
       }
 
       .bracket-btn.inactive:hover {
-        background-color: rgba(220, 38, 38, 0.1); /* Subtle red tint */
+        background-color: rgba(220, 38, 38, 0.1);
         color: white;
         border-color: #dc2626;
       }
 
-      /* Pagination styling */
       .pagination {
-        background-color: #121212; /* Match bracket buttons */
+        background-color: #121212;
 
         padding: 0.5rem;
       }
 
-      /* Pagination buttons */
       .pagination-btn {
         padding: 0.5rem 0.75rem;
         background-color: transparent;
-        color: #d1d5db; /* Light gray */
-        border: 2px solid #4b5563; /* Dark gray */
+        color: #d1d5db;
+        border: 2px solid #4b5563;
         border-radius: 6px;
         font-weight: bold;
         transition: all 0.2s ease;
@@ -225,10 +202,9 @@
         border-color: #4b5563;
       }
 
-      /* Page counter text */
       .page-counter {
-        color: white !important; /* Force white text */
-        font-family: "Racing Sans One", sans-serif;
+        color: white !important;
+
         text-align: center;
         padding-top: 3px;
         font-size: 1.2rem;
@@ -240,7 +216,6 @@
         margin-right: 5px;
       }
 
-      /* Added styles for positioning the pagination components */
       .controls-container {
         display: grid;
         grid-template-columns: 1fr auto 1fr;
@@ -262,52 +237,107 @@
       }
     </style>
   </head>
-  <body>
+  <body class="bg-gradient-to-b from-[#0a0a0a] to-[#1a1a1a]">
     <nav-bar></nav-bar>
     <main class="container mx-auto px-4 py-8">
-      <div class="controls-container">
-        <div
-          class="bracket-controls bg-gray-100 p-2 rounded-lg border border-gray-300"
-        >
-          <div class="flex gap-4">
-            <button id="btn2v2" class="bracket-btn active">2v2</button>
-            <button id="btn3v3" class="bracket-btn inactive">3v3</button>
+      <div
+        class="controls-container grid grid-cols-[1fr_auto_1fr] items-center mb-4"
+      >
+        <div class="col-start-1 flex gap-4 justify-self-start">
+          <div
+            class="bracket-controls bg-gray-900 p-2 rounded-lg border border-red-600"
+          >
+            <div class="flex gap-4">
+              <button
+                id="btn2v2"
+                class="bracket-btn px-6 py-2 rounded-md font-semibold transition-all duration-200 bg-red-600 text-white shadow-red-500/50"
+              >
+                2v2
+              </button>
+              <button
+                id="btn3v3"
+                class="bracket-btn px-6 py-2 rounded-md font-semibold transition-all duration-200 bg-transparent text-gray-300 hover:bg-red-600/10 hover:text-white border-2 border-gray-600"
+              >
+                3v3
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="bracket-controls bg-gray-900 p-2 rounded-lg border border-red-600"
+          >
+            <div class="flex gap-4">
+              <button
+                id="btnRegionEU"
+                class="bracket-btn px-6 py-2 rounded-md font-semibold transition-all duration-200 bg-red-600 text-white shadow-red-500/50"
+              >
+                EU
+              </button>
+              <button
+                id="btnRegionNA"
+                class="bracket-btn px-6 py-2 rounded-md font-semibold transition-all duration-200 bg-transparent text-gray-300 hover:bg-red-600/10 hover:text-white border-2 border-gray-600"
+              >
+                NA
+              </button>
+            </div>
           </div>
         </div>
-        <!-- Top pagination component -->
-        <pagination-buttons></pagination-buttons>
+
+        <pagination-buttons
+          class="col-start-2 justify-self-center"
+        ></pagination-buttons>
       </div>
 
       <div
         class="bg-white rounded-lg shadow-lg border-2 border-black overflow-hidden"
       >
-        <table class="ladder-table">
-          <thead>
+        <table
+          class="ladder-table w-full border-collapse text-xl tracking-wide bg-gray-100"
+        >
+          <thead class="sticky top-0 z-10">
             <tr>
-              <th width="8%">Rank</th>
-              <th width="30%">Player</th>
-              <th width="15%">Rating</th>
-              <th width="15%">Server</th>
-              <th width="15%">W/L</th>
-              <th width="12%">Win %</th>
+              <th
+                class="w-[8%] bg-black text-white px-3 py-3 text-center uppercase font-semibold tracking-wide border-b-3 border-red-600 shadow-md"
+              >
+                Rank
+              </th>
+              <th
+                class="w-[30%] bg-black text-white px-3 py-3 text-center uppercase font-semibold tracking-wide border-b-3 border-red-600 shadow-md"
+              >
+                Player
+              </th>
+              <th
+                class="w-[15%] bg-black text-white px-3 py-3 text-center uppercase font-semibold tracking-wide border-b-3 border-red-600 shadow-md"
+              >
+                Rating
+              </th>
+              <th
+                class="w-[15%] bg-black text-white px-3 py-3 text-center uppercase font-semibold tracking-wide border-b-3 border-red-600 shadow-md"
+              >
+                Server
+              </th>
+              <th
+                class="w-[15%] bg-black text-white px-3 py-3 text-center uppercase font-semibold tracking-wide border-b-3 border-red-600 shadow-md"
+              >
+                W/L
+              </th>
+              <th
+                class="w-[12%] bg-black text-white px-3 py-3 text-center uppercase font-semibold tracking-wide border-b-3 border-red-600 shadow-md"
+              >
+                Win %
+              </th>
             </tr>
           </thead>
-          <tbody id="ladderEntries">
-            <tr>
-              <td colspan="6" class="text-center py-8 text-gray-500">
-                Loading ladder data...
-              </td>
-            </tr>
+          <tbody id="ladderEntries" class="divide-y divide-gray-200">
+            <!-- ... existing tbody content ... -->
           </tbody>
         </table>
       </div>
 
-      <!-- Bottom pagination component -->
-      <div class="bottom-pagination">
+      <div class="bottom-pagination mt-6 flex justify-center">
         <pagination-buttons></pagination-buttons>
       </div>
     </main>
-
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
     <script src="../components/nav-bar.js"></script>
