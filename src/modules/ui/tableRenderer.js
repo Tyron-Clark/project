@@ -40,22 +40,31 @@ export async function displayPage(
     const row = document.createElement("tr");
     const globalRank = startIndex + index + 1;
     const cacheKey = `${entry.character.realm.slug}_${entry.character.name}`;
-    const characterClass = characterClassCache[cacheKey];
+    const characterClass = characterClassCache[cacheKey] || "default";
+
+    // Get the class color, default to white if not found
     const classColor = CLASS_COLORS[characterClass] || CLASS_COLORS.default;
+
     const capitalizedRealm = capitalizeFirstLetter(entry.character.realm.slug);
     const wins = entry.season_match_statistics.won;
     const losses = entry.season_match_statistics.lost;
     const winPercentage = calculateWinPercentage(wins, losses);
 
-    // Create a player URL for the details page
     const playerUrl = `/player/${entry.character.realm.slug}/${entry.character.name}`;
 
+    row.classList.add("clickable-row");
+    row.dataset.href = playerUrl;
+
+    // For debugging: Add class name as a tooltip
     row.innerHTML = `
       <td width="8%" class="font-medium text-center text-white">${globalRank}</td>
       <td width="30%" class="player-name">
         <div class="flex items-center">
-          <a href="${playerUrl}" class="player-link" style="color: ${classColor}; font-weight: bold;">${entry.character.name}</a>
+          <span class="player-main" style="color: ${classColor}; font-weight: bold;" title="Class: ${characterClass}">${entry.character.name}</span>
         </div>
+      </td>
+      <td width="15%" class="font-bold text-white text-center">
+        ${entry.rating}
       </td>
       <td width="15%" class="font-bold text-white text-center">
         ${entry.rating}
@@ -72,6 +81,10 @@ export async function displayPage(
         ${winPercentage}
       </td>
     `;
+
+    row.addEventListener("click", function () {
+      window.location.href = this.dataset.href;
+    });
 
     container.appendChild(row);
   });
