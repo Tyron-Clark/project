@@ -1,3 +1,4 @@
+// import { insertClassIconsGrid } from "./modules/api/characterMedia.js";
 import { getPvPLeaderboard } from "./modules/api/pvpLeaderboard.js";
 import { createPagination } from "./modules/ui/pagination.js";
 import { displayPage } from "./modules/ui/tableRenderer.js";
@@ -10,6 +11,8 @@ let entriesPerPage = 100;
 let allEntries = [];
 let totalPages = 1;
 let characterClassCache = {};
+let characterSpecCache = {};
+let characterMediaCache = {};
 
 // DOM elements
 const btn2v2 = document.getElementById("btn2v2");
@@ -35,6 +38,8 @@ document.addEventListener("DOMContentLoaded", function () {
       allEntries,
       entriesPerPage,
       characterClassCache,
+      characterSpecCache,
+      characterMediaCache,
       currentRegion
     );
     createPagination(totalPages, currentPage);
@@ -47,6 +52,8 @@ function updateDisplay() {
     allEntries,
     entriesPerPage,
     characterClassCache,
+    characterSpecCache,
+    characterMediaCache,
     currentRegion
   );
   createPagination(totalPages, currentPage);
@@ -56,7 +63,7 @@ async function loadLadderData(region, bracket) {
   const container = document.getElementById("ladderEntries");
   try {
     container.innerHTML =
-      '<tr><td colspan="6" class="text-center py-8 text-gray-500">Loading...</td></tr>';
+      '<tr><td colspan="7" class="text-center py-8 text-gray-500">Loading...</td></tr>';
 
     const leaderboard = await getPvPLeaderboard(region, bracket);
     allEntries = leaderboard.entries.sort((a, b) => b.rating - a.rating);
@@ -67,7 +74,7 @@ async function loadLadderData(region, bracket) {
     console.error("Error loading ladder:", error);
     container.innerHTML = `
       <tr>
-        <td colspan="6" class="text-center py-8 text-red-500">
+        <td colspan="7" class="text-center py-8 text-red-500">
           Failed to load ladder data. Please try again later.
         </td>
       </tr>`;
@@ -88,6 +95,8 @@ function switchRegion(region) {
   currentRegion = region;
   currentPage = 1;
   characterClassCache = {};
+  characterSpecCache = {};
+  characterMediaCache = {};
   updateButtonStyles();
   loadLadderData(currentRegion, currentBracket);
 }

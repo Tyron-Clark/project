@@ -9,7 +9,7 @@ export async function getCharacterInfo(
   try {
     const token = await getBattleNetToken();
     const response = await axios.get(
-      `https://${currentRegion}.api.blizzard.com/profile/wow/character/${realmSlug.toLowerCase()}/${characterName.toLowerCase()}`,
+      `https://${currentRegion}.api.blizzard.com/profile/wow/character/${realmSlug}/${characterName.toLowerCase()}`,
       {
         params: {
           namespace: `profile-classic-${currentRegion}`,
