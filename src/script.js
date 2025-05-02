@@ -10,6 +10,7 @@ let entriesPerPage = 100;
 let allEntries = [];
 let totalPages = 1;
 let characterClassCache = {};
+let characterSpecCache = {};
 
 // DOM elements
 const btn2v2 = document.getElementById("btn2v2");
@@ -35,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
       allEntries,
       entriesPerPage,
       characterClassCache,
+      characterSpecCache,
       currentRegion
     );
     createPagination(totalPages, currentPage);
@@ -47,6 +49,7 @@ function updateDisplay() {
     allEntries,
     entriesPerPage,
     characterClassCache,
+    characterSpecCache,
     currentRegion
   );
   createPagination(totalPages, currentPage);
@@ -56,7 +59,7 @@ async function loadLadderData(region, bracket) {
   const container = document.getElementById("ladderEntries");
   try {
     container.innerHTML =
-      '<tr><td colspan="6" class="text-center py-8 text-gray-500">Loading...</td></tr>';
+      '<tr><td colspan="7" class="text-center py-8 text-gray-500">Loading...</td></tr>';
 
     const leaderboard = await getPvPLeaderboard(region, bracket);
     allEntries = leaderboard.entries.sort((a, b) => b.rating - a.rating);
@@ -88,6 +91,7 @@ function switchRegion(region) {
   currentRegion = region;
   currentPage = 1;
   characterClassCache = {};
+  characterSpecCache = {};
   updateButtonStyles();
   loadLadderData(currentRegion, currentBracket);
 }

@@ -1,4 +1,4 @@
-import { getCharacterClass } from "../api/characterInfo.js";
+import { getCharacterClass, getCharacterSpec } from "../api/characterInfo.js";
 import { CLASS_COLORS } from "../utils/classColors.js";
 import {
   calculateWinPercentage,
@@ -10,6 +10,7 @@ export async function displayPage(
   allEntries,
   entriesPerPage,
   characterClassCache,
+  characterSpecCache,
   currentRegion
 ) {
   const container = document.getElementById("ladderEntries");
@@ -33,6 +34,19 @@ export async function displayPage(
     return cacheKey;
   });
 
+  const specPromises = pageEntries.map(async (entry) => {
+    const cacheKey = `${entry.character.realm.slug}_${entry.character.name}`;
+    if (!characterSpecCache[cacheKey]) {
+      const characterSpec = await getCharacterSpec(
+        currentRegion,
+        entry.character.realm.slug,
+        entry.character.name
+      );
+      characterSpecCache[cacheKey] = characterSpec || "default";
+    }
+  });
+
+  await Promise.all(specPromises);
   await Promise.all(classPromises);
 
   // Create each entry row
@@ -41,6 +55,7 @@ export async function displayPage(
     const globalRank = startIndex + index + 1;
     const cacheKey = `${entry.character.realm.slug}_${entry.character.name}`;
     const characterClass = characterClassCache[cacheKey] || "default";
+    const characterSpec = characterSpecCache[cacheKey] || "default";
 
     // Get the class color, default to white if not found
     const classColor = CLASS_COLORS[characterClass] || CLASS_COLORS.default;
@@ -66,8 +81,8 @@ export async function displayPage(
       <td width="15%" class="font-bold text-white text-center">
         ${entry.rating}
       </td>
-      <td width="15%" class="font-bold text-white text-center">
-        ${entry.rating}
+      <td width="15%" style="color: ${classColor}" class="font-bold text-center">
+        ${characterSpec}
       </td>
       <td width="12%" class="text-center text-white">
         <div class="flex items-center justify-center">
