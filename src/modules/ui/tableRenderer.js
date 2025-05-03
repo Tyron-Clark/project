@@ -1,5 +1,13 @@
-import { getCharacterClass, getCharacterSpec } from "../api/characterInfo.js";
-import { CLASS_COLORS } from "../utils/classColors.js";
+import {
+  getCharacterAvatar,
+  getCharacterClass,
+  getCharacterSpec,
+} from "../api/characterInfo.js";
+import {
+  CLASS_COLORS,
+  FACTION_COLORS,
+  PLAYER_AVATAR,
+} from "../utils/characterMedia.js";
 import {
   calculateWinPercentage,
   capitalizeFirstLetter,
@@ -11,6 +19,7 @@ export async function displayPage(
   entriesPerPage,
   characterClassCache,
   characterSpecCache,
+  characterMediaCache,
   currentRegion
 ) {
   const container = document.getElementById("ladderEntries");
@@ -42,12 +51,25 @@ export async function displayPage(
         entry.character.realm.slug,
         entry.character.name
       );
-      characterSpecCache[cacheKey] = characterSpec || "default";
+      characterSpecCache[cacheKey] = characterSpec || "*Spec Unknown*";
+    }
+  });
+
+  const mediaPromises = pageEntries.map(async (entry) => {
+    const cacheKey = `${entry.character.realm.slug}_${entry.character.name}`;
+    if (!characterMediaCache[cacheKey]) {
+      const characterMedia = await getCharacterAvatar(
+        currentRegion,
+        entry.character.realm.slug,
+        entry.character.name
+      );
+      characterMediaCache[cacheKey] = characterMedia || PLAYER_AVATAR;
     }
   });
 
   await Promise.all(specPromises);
   await Promise.all(classPromises);
+  await Promise.all(mediaPromises);
 
   // Create each entry row
   pageEntries.forEach((entry, index) => {
@@ -55,9 +77,11 @@ export async function displayPage(
     const globalRank = startIndex + index + 1;
     const cacheKey = `${entry.character.realm.slug}_${entry.character.name}`;
     const characterClass = characterClassCache[cacheKey] || "default";
-    const characterSpec = characterSpecCache[cacheKey] || "default";
+    const characterSpec = characterSpecCache[cacheKey] || "unknown";
+    const characterMedia = characterMediaCache[cacheKey] || null;
 
-    // Get the class color, default to white if not found
+    const factionColor =
+      FACTION_COLORS[entry.faction.type] || FACTION_COLORS.default;
     const classColor = CLASS_COLORS[characterClass] || CLASS_COLORS.default;
 
     const capitalizedRealm = capitalizeFirstLetter(entry.character.realm.slug);
@@ -75,6 +99,7 @@ export async function displayPage(
       <td width="8%" class="font-medium text-center text-white">${globalRank}</td>
       <td width="30%" class="player-name">
         <div class="flex items-center">
+          <img style="height:56px; width:56px;" src="${characterMedia}" class="rounded-md mr-4" >
           <span class="player-main" style="color: ${classColor}; font-weight: bold;" title="Class: ${characterClass}">${entry.character.name}</span>
         </div>
       </td>
@@ -85,7 +110,7 @@ export async function displayPage(
         ${characterSpec}
       </td>
       <td width="12%" class="text-center text-white">
-        <div class="flex items-center justify-center">
+        <div style="color: ${factionColor}" class="flex items-center justify-center">
           <span>${capitalizedRealm}</span>
         </div>
       </td>

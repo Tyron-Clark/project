@@ -58,6 +58,41 @@ export async function getCharacterClass(
   }
 }
 
+export async function getCharacterAvatar(
+  currentRegion,
+  realmSlug,
+  characterName
+) {
+  try {
+    const characterData = await getCharacterInfo(
+      currentRegion,
+      realmSlug,
+      characterName
+    );
+    if (!characterData || !characterData.media || !characterData.media.href) {
+      return null;
+    }
+    const token = await getBattleNetToken();
+    const response = await axios.get(characterData.media.href, {
+      params: {
+        namespace: `profile-classic-${currentRegion}`,
+        locale: "en_US",
+      },
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const mediaData = response.data;
+    return mediaData.assets[0].value;
+  } catch (error) {
+    console.error(
+      "Error fetching character media:",
+      error.response?.data || error.message
+    );
+    return null;
+  }
+}
+
 export async function getCharacterSpec(
   currentRegion,
   realmSlug,

@@ -56,7 +56,7 @@
           to right,
           rgba(220, 38, 38, 0.2),
           transparent
-        ); /* Very light red on hover */
+        );
         box-shadow: inset 0 0 0 1px #dc2626;
         cursor: pointer;
       }
@@ -83,7 +83,7 @@
 
       .player-name div {
         display: flex;
-        align-items: start;
+        align-items: center;
         justify-content: start;
         padding-left: 0;
         letter-spacing: 3px;
@@ -139,8 +139,8 @@
       }
 
       .bracket-controls {
-        background-color: #121212 !important; /* Dark background */
-        border: 1px solid #dc2626 !important; /* Red border */
+        background-color: #121212 !important;
+        border: 1px solid #dc2626 !important;
         border-radius: 8px;
       }
 
@@ -236,6 +236,53 @@
         display: flex;
         justify-content: center;
       }
+      .class-filters {
+        padding: 0.5rem;
+        margin-left: 7rem;
+      }
+
+      .class-filter-buttons {
+        display: inline-flex;
+        flex-wrap: nowrap;
+        gap: 4px;
+        justify-content: flex-start;
+        max-width: fit-content;
+      }
+
+      .class-filter-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 6px;
+        background-color: #1e1e1e;
+        border: 2px solid #4b5563;
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        overflow: hidden;
+      }
+
+      .class-filter-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .class-filter-btn.active {
+        background-color: #2d2d2d;
+        transform: translateY(-2px);
+        box-shadow: 0 0 8px rgba(220, 38, 38, 0.5);
+      }
+
+      .class-icon {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     </style>
   </head>
   <body class="bg-gradient-to-b from-[#0a0a0a] to-[#1a1a1a]">
@@ -284,9 +331,8 @@
           </div>
         </div>
 
-        <pagination-buttons
-          class="col-start-2 justify-self-center"
-        ></pagination-buttons>
+        <pagination-buttons class=""></pagination-buttons>
+        <class-filter-buttons class=""></class-filter-buttons>
       </div>
 
       <div
@@ -348,6 +394,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
     <script src="../components/nav-bar.js"></script>
     <script src="../components/pagination-buttons.js"></script>
+    <script type="module" src="../components/class-filter-buttons.js"></script>
+
     <script type="module" src="../script.js"></script>
   </body>
 </html>
